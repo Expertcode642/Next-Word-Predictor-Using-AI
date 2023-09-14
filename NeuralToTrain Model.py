@@ -1,0 +1,7 @@
+model = Sequential()
+model.add(Embedding(total_words, 100, input_length=max_sequence_len-1))
+model.add(LSTM(150))
+model.add(Dense(total_words, activation='softmax'))
+print(model.summary())
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.fit(X, y, epochs=100, verbose=1)
